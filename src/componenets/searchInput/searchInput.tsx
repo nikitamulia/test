@@ -4,7 +4,7 @@ import { setFilter } from "../../redux/slice";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 
 
-export const searchInput: FC = () => {
+export const SearchInput: FC = () => {
     const filter = useAppSelector((state) => state.filter);
     const dispath = useAppDispatch();
 
@@ -26,7 +26,7 @@ export const searchInput: FC = () => {
                 InputProps={{
                     startAdornment: (
                         <InputAdornment position="start">
-                          
+                            {/* <Search sx={{ fontSize: 20 }} /> */}
                         </InputAdornment>
                     ),
                     sx: { height: "50px", pl: "20px", lineHeight: 1.5 },

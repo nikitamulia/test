@@ -11,9 +11,10 @@ import {
 } from "@mui/material";
 import Highlighter from "react-highlight-words";
 import { useAppSelector } from "../../redux/store";
+import { getFormatedDate } from "./articleUtils/utils";
 
 
-export const articleItem: FC<Article> = (article) => {
+export const ArticleItem: FC<Article> = (article) => {
     
     const filter = useAppSelector(state => state.filter);
     const navigate = useNavigate();
@@ -45,9 +46,9 @@ export const articleItem: FC<Article> = (article) => {
                                 opacity: 0.6,
                             }}
                         >
-                           
+                            {/* <Calendar sx={{ fontSize: 16 }} /> */}
                             <Typography sx={{ fontSize: 14 }}>
-                             
+                                {getFormatedDate(article.publishedAt)}
                             </Typography>
                         </Box>
                         <Typography
@@ -83,7 +84,7 @@ export const articleItem: FC<Article> = (article) => {
                             <Typography sx={{ fontWeight: 700 }}>
                                 Read more
                             </Typography>
-                           
+                            {/* <ArrowRight sx={{ width: 12 }} /> */}
                         </Box>
                     </Box>
                 </CardContent>
@@ -92,3 +93,4 @@ export const articleItem: FC<Article> = (article) => {
     )
 }
 
+console.log('ArticleItem', ArticleItem)

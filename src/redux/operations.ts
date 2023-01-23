@@ -1,3 +1,4 @@
+
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { Article } from "../types/types";
@@ -9,8 +10,8 @@ export const fetchArticles = createAsyncThunk(
   "articles/fetchAll",
   async (_, thunkAPI) => {
   try {
-    const response = await axios.get<Article[]>("/v3/articles?_limit=100");
-    return response.data;
+    const { data } = await axios.get<Article[]>("/v3/articles?_limit=100");
+    return data;
   } catch (e: any) {
     return thunkAPI.rejectWithValue(e.message);
   }
