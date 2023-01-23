@@ -9,7 +9,7 @@ interface ArticlesState {
     article: Article | null;
     loading: boolean;
     error:  string | null ;
-    filter: string
+    filter: string;
 }
   
 const initialState: ArticlesState = {
@@ -17,7 +17,7 @@ const initialState: ArticlesState = {
     article: null,
     loading: false,
     error: null,
-    filter: ""
+    filter: "",
 }
 
 const articlesSlice = createSlice({
@@ -34,7 +34,7 @@ const articlesSlice = createSlice({
                 state.loading = true;
                 state.error = null;
             })
-            .addCase(fetchArticles.fulfilled, (state, action) => {
+            .addCase(fetchArticles.fulfilled, (state, action: PayloadAction<any>) => {
                 state.list = action.payload;
                 state.loading = false;
             })
