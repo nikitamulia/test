@@ -44,15 +44,7 @@ export const InfoPage: FC = () => {
                     {article?.title}
                 </Typography>
                 <Typography paragraph sx={{ mt: "50px", fontSize: 18 }}>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Quod in laboriosam quisquam amet, esse ipsum, incidunt odio
-                    nemo qui id quaerat ab laudantium? Similique cupiditate aut
-                    veniam ullam nostrum quas esse accusamus, blanditiis, nisi
-                    necessitatibus vitae obcaecati quidem dolor voluptas
-                    quisquam sed consequuntur dolorem nulla nam eveniet? Ab qui
-                    molestias blanditiis esse alias perferendis labore corporis
-                    nesciunt cum aliquid praesentium maiores voluptatibus,
-                    dolores delectus amet odio sit doloribus iure dolor.
+                   {article?.summary}
                 </Typography>
             </Box>
             <Button

@@ -1,6 +1,6 @@
 import { FC } from "react";
-import { ArticleList } from "../../componenets/articleList/ArticleList";
-import { SearchInput } from "../../componenets/searchInput/SearchInput";
+import { ArticleList } from "../../components/articleList/ArticleList";
+import { SearchInput } from "../../components/searchInput/SearchInput";
 import { Box } from "@mui/material";
 
 

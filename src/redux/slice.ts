@@ -1,5 +1,5 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {fetchArticles, getArticle} from './operations';
+import {fetchArticles} from './operations';
 import { Article } from "../types/types";
 
 
@@ -8,7 +8,7 @@ interface ArticlesState {
     list: Article[];
     article: Article | null;
     loading: boolean;
-    error:  string | null ;
+    error:  string | null | undefined ;
     filter: string;
 }
   
@@ -34,28 +34,15 @@ const articlesSlice = createSlice({
                 state.loading = true;
                 state.error = null;
             })
-            .addCase(fetchArticles.fulfilled, (state, action: PayloadAction<any>) => {
+            .addCase(fetchArticles.fulfilled, (state, action) => {
                 state.list = action.payload;
                 state.loading = false;
             })
-            .addCase(fetchArticles.rejected, (state, action: PayloadAction<any>) => {
+            .addCase(fetchArticles.rejected, (state, action) => {
                 state.loading = false;
                 state.error = action.payload;
             })
-
-            .addCase(getArticle.pending, (state) => {
-                state.loading = true;
-                state.error = null;
-            })
-            .addCase(getArticle.fulfilled, (state, action: PayloadAction<any>) => {
-                state.article = action.payload;
-                state.loading = false;
-            })
-            .addCase(getArticle.rejected, (state, action: PayloadAction<any>) => {
-                state.loading = false;
-                state.error = action.payload;
-            });
-    }
+    },
 })
 export default articlesSlice.reducer;
 export const { setFilter } = articlesSlice.actions;
