@@ -2,6 +2,7 @@ import { FC } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Box, Typography, Button } from "@mui/material";
 import { useAppSelector } from "../../redux/store";
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 
 export const InfoPage: FC = () => {
@@ -13,12 +14,14 @@ export const InfoPage: FC = () => {
     const navigate = useNavigate();
 
     return(
-        <>
+        <>  
             <img
                 className="image"
                 src={article?.imageUrl}
-                alt="article poster"
+                alt={article?.title}
                 height="245px"
+                width="100%"
+                
             />
             <Box
                 sx={{
@@ -58,7 +61,7 @@ export const InfoPage: FC = () => {
                     color: "inherit",
                 }}
             >
-                Back to homepage
+               <ArrowBackIcon fontSize="small"/> Back to homepage
             </Button>
         </>
     )

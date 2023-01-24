@@ -4,29 +4,31 @@ import { useNavigate } from "react-router-dom";
 import {
     Typography,
     Card,
-    CardActionArea,
     CardMedia,
     CardContent,
     Box,
+    Button,
 } from "@mui/material";
 import Highlighter from "react-highlight-words";
 import { useAppSelector } from "../../redux/store";
-import { getFormatedDate } from "./articleUtils/utils";
+import moment from 'moment';
+import CalendarTodayOutlinedIcon from '@mui/icons-material/CalendarTodayOutlined';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+
 
 
 export const ArticleItem: FC<Article> = (article) => {
-    
+    const date = moment(article.publishedAt).format('MMM Do, YYYY');
     const filter = useAppSelector(state => state.filter);
     const navigate = useNavigate();
 
     return (
-       <Card>
-            <CardActionArea onClick={() => navigate(`/article/${article.id}`)}>
+       <Card sx={{ boxShadow: 1 }}>
                 <CardMedia
                     component="img"
                     height="217"
                     image={article.imageUrl}
-                    alt="article image"
+                    alt={article.title}
                 />
                 <CardContent
                     sx={{
@@ -46,9 +48,9 @@ export const ArticleItem: FC<Article> = (article) => {
                                 opacity: 0.6,
                             }}
                         >
-                            {/* <Calendar sx={{ fontSize: 16 }} /> */}
+                           <CalendarTodayOutlinedIcon fontSize="small" />
                             <Typography sx={{ fontSize: 14 }}>
-                                {getFormatedDate(article.publishedAt)}
+                            {date}
                             </Typography>
                         </Box>
                         <Typography
@@ -56,7 +58,6 @@ export const ArticleItem: FC<Article> = (article) => {
                                 mt: "25px",
                                 fontSize: 24,
                                 lineHeight: 1.21,
-                                filter: "drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)) drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))",
                             }}
                         >
                             <Highlighter
@@ -81,14 +82,15 @@ export const ArticleItem: FC<Article> = (article) => {
                                 mt: "20px",
                             }}
                         >
-                            <Typography sx={{ fontWeight: 700 }}>
+                            <Button onClick={() => navigate(`/article/${article.id}`)}
+                             sx={{ fontWeight: 700, color: "#363636", pr: "10px" }}>
                                 Read more
-                            </Typography>
-                            {/* <ArrowRight sx={{ width: 12 }} /> */}
+                                <ArrowForwardIcon fontSize="small" color="inherit"/>
+                            </Button>
+                            
                         </Box>
                     </Box>
                 </CardContent>
-            </CardActionArea>
         </Card>
     )
 }

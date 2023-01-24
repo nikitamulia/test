@@ -13,9 +13,7 @@ export const ArticleList: FC = () => {
     return (
         <>
             <Typography sx={{ mt: 5, lineHeight: 1.25, fontWeight: 600 }}>
-                {filter
-                    ? `Results: ${list.length}`
-                    : `Last ${list.length} articles`}
+               Results: {list.length}
             </Typography>
             <Divider sx={{ mb: "45px", borderColor: "#EAEAEA" }} />
             <Grid container spacing={{ md: "45px" }} columns={{ md: 12 }}>
